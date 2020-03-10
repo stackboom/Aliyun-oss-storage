@@ -593,7 +593,7 @@ class AliOssAdapter extends AbstractAdapter
         if (Arr::has($options, OssClient::OSS_METHOD)) {
             $method = $options['method'];
         }
-        return tap($this->getClient(),function(\OSS\OssClient $client){$client->setUseSSL(true);})
+        return tap($this->getClient(),function(\OSS\OssClient $client){$client->setUseSSL($this->ssl);})
             ->signUrl(
                 $this->getBucket(),
                 $path,
